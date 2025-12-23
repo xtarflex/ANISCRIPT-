@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Simple fade-up",
+    "input": ":: fade-up :: { Hello World }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">Hello World</div>"
+  },
+  {
+    "name": "Fade-up with explicit delay",
+    "input": ":: fade-up | @200ms :: { Content }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"200ms\" data-ani-duration=\"1s\">Content</div>"
+  },
+  {
+    "name": "Fade-up with span tag",
+    "input": ":: fade-up | span :: { Inline }",
+    "expected": "<span data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">Inline</span>"
+  },
+  {
+    "name": "Fade-up with duration",
+    "input": ":: fade-up | dur:2s :: { Long Animation }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"2s\">Long Animation</div>"
+  },
+  {
+    "name": "All parameters",
+    "input": ":: zoom-in | span | @100ms | dur:500ms :: { Detailed }",
+    "expected": "<span data-ani=\"zoom-in\" data-ani-delay=\"100ms\" data-ani-duration=\"500ms\">Detailed</span>"
+  },
+  {
+    "name": "All parameters (reordered delay/duration)",
+    "input": ":: zoom-in | span | dur:500ms | @100ms :: { Detailed }",
+    "expected": "<span data-ani=\"zoom-in\" data-ani-delay=\"100ms\" data-ani-duration=\"500ms\">Detailed</span>"
+  },
+  {
+    "name": "Stagger container",
+    "input": "[[ stagger: 100ms ]] :: fade-up :: {1} :: fade-up :: {2} [[/]]",
+    "expected": "<div data-ani-stagger=\"100ms\"><div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">1</div><div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">2</div></div>"
+  },
+  {
+    "name": "Nested stagger",
+    "input": "[[ stagger: 100ms ]] [[ stagger: 50ms ]] :: fade-up :: {A} [[/]] [[/]]",
+    "expected": "<div data-ani-stagger=\"100ms\"><div data-ani-stagger=\"50ms\"><div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">A</div></div></div>"
+  },
+  {
+    "name": "Empty content",
+    "input": ":: fade-up :: {}",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\"></div>"
+  },
+  {
+    "name": "Whitespace in block",
+    "input": " ::  fade-up  |  @100ms  :: {  Text  }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"100ms\" data-ani-duration=\"1s\">Text</div>"
+  },
+  {
+    "name": "Escaped syntax characters (not yet specified, assuming literal for now)",
+    "input": ":: fade-up :: { text with :: }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">text with ::</div>"
+  },
+  {
+    "name": "Slide-left animation",
+    "input": ":: slide-left :: { Slide }",
+    "expected": "<div data-ani=\"slide-left\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">Slide</div>"
+  },
+  {
+    "name": "Zoom-out animation",
+    "input": ":: zoom-out :: { Zoom }",
+    "expected": "<div data-ani=\"zoom-out\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">Zoom</div>"
+  },
+  {
+    "name": "Multiple animations in a row",
+    "input": ":: fade-up :: {1} :: fade-down :: {2}",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">1</div><div data-ani=\"fade-down\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">2</div>"
+  },
+  {
+    "name": "Stagger with custom delay",
+    "input": "[[ stagger: 200ms ]] :: fade-up | @0ms :: {Start} [[/]]",
+    "expected": "<div data-ani-stagger=\"200ms\"><div data-ani=\"fade-up\" data-ani-delay=\"0ms\" data-ani-duration=\"1s\">Start</div></div>"
+  },
+  {
+    "name": "Stagger with multiple tags",
+    "input": "[[ stagger: 100ms ]] :: fade-up | span :: {S} :: fade-up :: {D} [[/]]",
+    "expected": "<div data-ani-stagger=\"100ms\"><span data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">S</span><div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">D</div></div>"
+  },
+  {
+    "name": "Missing units (assuming default ms or error, let's assume default ms for now)",
+    "input": ":: fade-up | @300 :: { No unit }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"300ms\" data-ani-duration=\"1s\">No unit</div>"
+  },
+  {
+    "name": "Duration in seconds",
+    "input": ":: fade-up | dur:0.5s :: { Half Sec }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"0.5s\">Half Sec</div>"
+  },
+  {
+    "name": "Stagger without duration",
+    "input": "[[ stagger: 100ms ]] :: fade-up :: {1} [[/]]",
+    "expected": "<div data-ani-stagger=\"100ms\"><div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">1</div></div>"
+  },
+  {
+    "name": "Complex text in content",
+    "input": ":: fade-up :: { <span>Nested HTML</span> }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\"><span>Nested HTML</span></div>"
+  },
+  {
+    "name": "Nested Animation",
+    "input": ":: fade-up :: { Outer :: fade-down :: { Inner } }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">Outer <div data-ani=\"fade-down\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">Inner</div></div>"
+  },
+  {
+    "name": "Duplicate Parameters (Last wins)",
+    "input": ":: fade | @100ms | @500ms :: { Content }",
+    "expected": "<div data-ani=\"fade\" data-ani-delay=\"500ms\" data-ani-duration=\"1s\">Content</div>"
+  },
+  {
+    "name": "Unknown Modifiers (Ignored)",
+    "input": ":: fade | unknown-garbage | @200ms :: { Content }",
+    "expected": "<div data-ani=\"fade\" data-ani-delay=\"200ms\" data-ani-duration=\"1s\">Content</div>"
+  },
+  {
+    "name": "Negative: Unclosed Block",
+    "input": ":: fade :: { Unclosed",
+    "expected_error": "Syntax Error: Unclosed content block"
+  },
+  {
+    "name": "Negative: Unclosed Stagger",
+    "input": "[[ stagger: 100ms ]] :: fade :: { Content }",
+    "expected_error": "Syntax Error: Unclosed stagger block"
+  },
+  {
+    "name": "Negative: Missing Animation Name",
+    "input": ":: | @100ms :: { Content }",
+    "expected_error": "Syntax Error: Missing animation name"
+  }
+]
