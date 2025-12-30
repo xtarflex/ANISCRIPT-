@@ -1,0 +1,65 @@
+/**
+ * AniScript Slide Animations
+ */
+
+/* Selectors */
+[data-ani="slide-in-up"].ani-running {
+    animation-name: ani-slide-in-up;
+}
+
+[data-ani="slide-in-down"].ani-running {
+    animation-name: ani-slide-in-down;
+}
+
+[data-ani="slide-in-left"].ani-running {
+    animation-name: ani-slide-in-left;
+}
+
+[data-ani="slide-in-right"].ani-running {
+    animation-name: ani-slide-in-right;
+}
+
+/* Keyframes */
+@keyframes ani-slide-in-up {
+    from {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-slide-in-down {
+    from {
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-slide-in-left {
+    from {
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-slide-in-right {
+    from {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}

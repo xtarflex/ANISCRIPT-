@@ -1,0 +1,133 @@
+/**
+ * AniScript Zoom Animations
+ */
+
+/* Selectors */
+[data-ani="zoom-in"].ani-running {
+    animation-name: ani-zoom-in;
+}
+
+[data-ani="zoom-in-sm"].ani-running {
+    animation-name: ani-zoom-in-sm;
+}
+
+[data-ani="zoom-in-lg"].ani-running {
+    animation-name: ani-zoom-in-lg;
+}
+
+[data-ani="zoom-out"].ani-running {
+    animation-name: ani-zoom-out;
+}
+
+[data-ani="zoom-out-sm"].ani-running {
+    animation-name: ani-zoom-out-sm;
+}
+
+[data-ani="zoom-out-lg"].ani-running {
+    animation-name: ani-zoom-out-lg;
+}
+
+[data-ani="zoom-in-up"].ani-running {
+    animation-name: ani-zoom-in-up;
+}
+
+[data-ani="zoom-in-down"].ani-running {
+    animation-name: ani-zoom-in-down;
+}
+
+/* Keyframes */
+@keyframes ani-zoom-in {
+    from {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes ani-zoom-in-sm {
+    from {
+        opacity: 0;
+        transform: scale3d(0.8, 0.8, 0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes ani-zoom-in-lg {
+    from {
+        opacity: 0;
+        transform: scale3d(0, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes ani-zoom-out {
+    from {
+        opacity: 0;
+        transform: scale3d(1.3, 1.3, 1.3);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes ani-zoom-out-sm {
+    from {
+        opacity: 0;
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes ani-zoom-out-lg {
+    from {
+        opacity: 0;
+        transform: scale3d(2, 2, 2);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes ani-zoom-in-up {
+    from {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-zoom-in-down {
+    from {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+    }
+}

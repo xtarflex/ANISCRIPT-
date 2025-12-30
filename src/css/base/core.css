@@ -1,0 +1,24 @@
+/**
+ * AniScript Core Styles
+ * Essential state classes and default timing variables.
+ */
+
+[data-ani] {
+    --ani-duration: 1000ms;
+    --ani-delay: 500ms;
+    --ani-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    animation-duration: var(--ani-duration);
+    animation-delay: var(--ani-delay);
+    animation-timing-function: var(--ani-easing);
+    animation-fill-mode: forwards;
+}
+
+[data-ani].ani-paused {
+    opacity: 0;
+    pointer-events: none;
+}
+
+[data-ani].ani-running {
+    pointer-events: auto;
+}

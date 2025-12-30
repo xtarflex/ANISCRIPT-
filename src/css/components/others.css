@@ -1,0 +1,409 @@
+/**
+ * AniScript Special Animations
+ * Includes flips, rotations, blur effects, and attention seekers.
+ */
+
+/* Selectors - Flips & Rotations */
+[data-ani="flip-x"].ani-running {
+    animation-name: ani-flip-x;
+}
+
+[data-ani="flip-y"].ani-running {
+    animation-name: ani-flip-y;
+}
+
+[data-ani="rotate-in-cw"].ani-running {
+    animation-name: ani-rotate-in-cw;
+}
+
+[data-ani="rotate-in-ccw"].ani-running {
+    animation-name: ani-rotate-in-ccw;
+}
+
+[data-ani="rotate-up"].ani-running {
+    animation-name: ani-rotate-up;
+}
+
+[data-ani="rotate-down"].ani-running {
+    animation-name: ani-rotate-down;
+}
+
+/* Selectors - Blur & Effects */
+[data-ani="blur-in"].ani-running {
+    animation-name: ani-blur-in;
+}
+
+[data-ani="blur-in-sm"].ani-running {
+    animation-name: ani-blur-in-sm;
+}
+
+[data-ani="blur-in-lg"].ani-running {
+    animation-name: ani-blur-in-lg;
+}
+
+[data-ani="blur-out"].ani-running {
+    animation-name: ani-blur-out;
+}
+
+/* Selectors - Attention Seekers */
+[data-ani="shake-h"].ani-running {
+    animation-name: ani-shake-h;
+}
+
+[data-ani="shake-v"].ani-running {
+    animation-name: ani-shake-v;
+}
+
+[data-ani="pulse"].ani-running {
+    animation-name: ani-pulse;
+}
+
+[data-ani="swing"].ani-running {
+    animation-name: ani-swing;
+}
+
+[data-ani="jello"].ani-running {
+    animation-name: ani-jello;
+}
+
+[data-ani="wobble"].ani-running {
+    animation-name: ani-wobble;
+}
+
+[data-ani="rubber-band"].ani-running {
+    animation-name: ani-rubber-band;
+}
+
+/* Keyframes - Flips & Rotations */
+@keyframes ani-flip-x {
+    from {
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        animation-timing-function: ease-in;
+    }
+
+    60% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+    }
+
+    80% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+
+    to {
+        transform: perspective(400px);
+    }
+}
+
+@keyframes ani-flip-y {
+    from {
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        animation-timing-function: ease-in;
+    }
+
+    60% {
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        opacity: 1;
+    }
+
+    80% {
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    }
+
+    to {
+        transform: perspective(400px);
+    }
+}
+
+@keyframes ani-rotate-in-cw {
+    from {
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes ani-rotate-in-ccw {
+    from {
+        transform: rotate3d(0, 0, 1, 200deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes ani-rotate-up {
+    from {
+        transform-origin: center bottom;
+        transform: rotate3d(0, 0, 1, 45deg);
+        opacity: 0;
+    }
+
+    to {
+        transform-origin: center bottom;
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes ani-rotate-down {
+    from {
+        transform-origin: center bottom;
+        transform: rotate3d(0, 0, 1, -45deg);
+        opacity: 0;
+    }
+
+    to {
+        transform-origin: center bottom;
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+/* Keyframes - Blur & Effects */
+@keyframes ani-blur-in {
+    from {
+        filter: blur(20px);
+        opacity: 0;
+    }
+
+    to {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ani-blur-in-sm {
+    from {
+        filter: blur(5px);
+        opacity: 0;
+    }
+
+    to {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ani-blur-in-lg {
+    from {
+        filter: blur(50px);
+        opacity: 0;
+    }
+
+    to {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ani-blur-out {
+    from {
+        filter: blur(0);
+        opacity: 1;
+    }
+
+    to {
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+/* Keyframes - Attention Seekers */
+@keyframes ani-shake-h {
+
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(-10px, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(10px, 0, 0);
+    }
+}
+
+@keyframes ani-shake-v {
+
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(0, -10px, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(0, 10px, 0);
+    }
+}
+
+@keyframes ani-pulse {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes ani-swing {
+    20% {
+        transform: rotate3d(0, 0, 1, 15deg);
+    }
+
+    40% {
+        transform: rotate3d(0, 0, 1, -10deg);
+    }
+
+    60% {
+        transform: rotate3d(0, 0, 1, 5deg);
+    }
+
+    80% {
+        transform: rotate3d(0, 0, 1, -5deg);
+    }
+
+    to {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+}
+
+@keyframes ani-jello {
+
+    from,
+    11.1%,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+
+    22.2% {
+        transform: skewX(-12.5deg) skewY(-12.5deg);
+    }
+
+    33.3% {
+        transform: skewX(6.25deg) skewY(6.25deg);
+    }
+
+    44.4% {
+        transform: skewX(-3.125deg) skewY(-3.125deg);
+    }
+
+    55.5% {
+        transform: skewX(1.5625deg) skewY(1.5625deg);
+    }
+
+    66.6% {
+        transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    }
+
+    77.7% {
+        transform: skewX(0.390625deg) skewY(0.390625deg);
+    }
+
+    88.8% {
+        transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    }
+}
+
+@keyframes ani-wobble {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    15% {
+        transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    }
+
+    30% {
+        transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    }
+
+    45% {
+        transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    }
+
+    60% {
+        transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    }
+
+    75% {
+        transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-rubber-band {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+
+    75% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}

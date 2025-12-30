@@ -1,4 +1,13 @@
-# AniScript Technical Specification
+# AniScript Technical Specification (v1.0.0)
+
+## 0. Assumptions & Constraints
+- **Default Duration**: `1000ms` (1s).
+- **Default Delay**: `500ms`.
+- **Default Tag**: `div`.
+- **Default Easing**: `cubic-bezier(0.4, 0, 0.2, 1)` (ease-out).
+- **Stagger Base Delay**: `100ms`.
+- **Hardware Acceleration**: Animations must only use `transform` and `opacity`.
+- **Browser Support**: Modern browsers with `IntersectionObserver` support.
 
 ## 1. Project Definition
 AniScript is a dual-module animation library consisting of:
@@ -6,20 +15,10 @@ AniScript is a dual-module animation library consisting of:
 - **Module B (Runtime)**: Browser JS for handling animation state and "Option B" inline style logic.
 - **Module C (Styles)**: Pure CSS keyframes.
 
-## 2. Assumptions
-- **Default Duration**: `1s` (unless specified).
-- **Default Delay**: `500ms`.
-- **Default Tag**: `div`.
-- **Default Easing**: `ease-out`.
-- **Environment**:
-  - Compiler: Node.js (Build time/SSG).
-  - Runtime: Modern Browsers (ES6+, IntersectionObserver).
-- **Stagger Logic**: Stagger delays are cumulative based on the DOM order within the stagger container.
-
-## 3. Module A: Compiler (Node.js)
+## 2. Module A: Compiler (Node.js)
 Transforms `.ani` syntax (or string input) into HTML with specific data attributes.
 
-### 3.1 Syntax
+### 2.1 Syntax
 **Single Element:**
 ```
 :: animation-name | tag | @delay | dur:duration :: { content }
@@ -40,7 +39,7 @@ Transforms `.ani` syntax (or string input) into HTML with specific data attribut
 - `[[ stagger: time ]]`: Opens a stagger group.
 - `[[/]]`: Closes the group.
 
-### 3.2 Output HTML
+### 2.2 Output HTML
 The compiler generates a wrapper (`div` or `span`) for each animation block.
 
 **Single Element:**
@@ -57,7 +56,10 @@ The compiler generates a wrapper (`div` or `span`) for each animation block.
 </div>
 ```
 
-## 4. Module B: Runtime (Browser JS)
+## 3. Module B: Runtime (Browser JS)
+> [!NOTE]
+> This module is handled by another agent.
+
 ### 4.1 Logic (Option B: Inline Styles)
 The runtime is responsible for reading attributes and applying inline styles for timing, ensuring the CSS handles the visual transition.
 
@@ -82,7 +84,7 @@ The runtime is responsible for reading attributes and applying inline styles for
     - Add `.ani-running`.
 - **CSS Trigger**: The presence of `.ani-running` triggers the CSS animation name.
 
-## 5. Module C: Styles (CSS)
+## 4. Module C: Styles (CSS)
 Contains the actual animation keyframes.
 
 ### 5.1 Selectors
@@ -97,15 +99,18 @@ Selectors combine the data attribute and the running class.
 ### 5.2 Keyframes
 Must use hardware-accelerated properties (`transform`, `opacity`). 
 
-**Supported Animations:**
-- **Fade**: `fade-in`, `fade-up`, `fade-down`, `fade-left`, `fade-right`.
-- **Fade (Variations)**: `fade-up-sm`, `fade-up-lg`, `fade-down-sm`, `fade-down-lg`.
-- **Zoom**: `zoom-in`, `zoom-in-sm`, `zoom-in-lg`, `zoom-out`, `zoom-out-sm`, `zoom-out-lg`.
-- **Flip**: `flip-x`, `flip-y`.
-- **Rotate**: `rotate-in-cw`, `rotate-in-ccw`.
-- **Slide (Full)**: `slide-in-up`, `slide-in-down`, `slide-in-left`, `slide-in-right`.
+**Supported Animations (53):**
+- **Fades (11)**: `fade-in`, `fade-up`, `fade-down`, `fade-left`, `fade-right`, `fade-up-sm`, `fade-up-lg`, `fade-down-sm`, `fade-down-lg`, `fade-left-sm`, `fade-right-sm`.
+- **Diagonal Fades (4)**: `fade-up-left`, `fade-up-right`, `fade-down-left`, `fade-down-right`.
+- **Zooms (8)**: `zoom-in`, `zoom-in-sm`, `zoom-in-lg`, `zoom-out`, `zoom-out-sm`, `zoom-out-lg`, `zoom-in-up`, `zoom-in-down`.
+- **Slides (4)**: `slide-in-up`, `slide-in-down`, `slide-in-left`, `slide-in-right`.
+- **Flips & Rotations (6)**: `flip-x`, `flip-y`, `rotate-in-cw`, `rotate-in-ccw`, `rotate-up`, `rotate-down`.
+- **Bounces (5)**: `bounce-in`, `bounce-up`, `bounce-down`, `bounce-left`, `bounce-right`.
+- **Blur & Effects (4)**: `blur-in`, `blur-in-sm`, `blur-in-lg`, `blur-out`.
+- **Slides & Bounces (4)**: `slide-bounce-up`, `slide-bounce-down`, `slide-bounce-left`, `slide-bounce-right`.
+- **Attention Seekers (7)**: `shake-h`, `shake-v`, `pulse`, `swing`, `jello`, `wobble`, `rubber-band`.
 
-## 8. Edge Case & Error Behavior
+## 5. Edge Case & Error Behavior
 ### 8.1 Syntax Errors
 - **Unclosed Blocks `{ ... }**: The parser must throw an error if a content block is not closed before EOF or the next instruction.
 - **Unclosed Stagger `[[ ... ]]`: The parser must throw an error if a stagger block is not closed.

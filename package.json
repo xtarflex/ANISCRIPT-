@@ -2,18 +2,28 @@
     "name": "aniscript",
     "version": "1.0.0",
     "description": "A dual-module animation library with a DSL compiler and standard runtime.",
-    "main": "src/runtime/index.js",
+    "main": "src/index.js",
+    "module": "src/index.js",
+    "exports": {
+        ".": "./src/index.js",
+        "./compiler": "./src/compiler/index.js",
+        "./runtime": "./src/runtime/index.js"
+    },
     "scripts": {
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "build:css": "cat src/css/*.css > dist/aniscript.css",
-        "dev": "npm run build:css"
+        "test": "node scripts/test-compiler.js",
+        "test:compiler": "node scripts/test-compiler.js",
+        "test:jest": "jest",
+        "build:css": "node scripts/build-css.js",
+        "dev": "npm run build:css",
+        "prepublishOnly": "npm run test && npm run build:css"
     },
     "keywords": [
         "animation",
-        "dsl",
         "compiler",
-        "runtime"
+        "markdown",
+        "intersection-observer",
+        "web-animations",
+        "dsl"
     ],
     "author": "",
     "license": "ISC",

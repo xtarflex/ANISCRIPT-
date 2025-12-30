@@ -1,0 +1,244 @@
+/**
+ * AniScript Fade Animations
+ * Includes standard fades and diagonal variations.
+ */
+
+/* Selectors */
+[data-ani="fade-in"].ani-running {
+    animation-name: ani-fade-in;
+}
+
+[data-ani="fade-up"].ani-running {
+    animation-name: ani-fade-up;
+}
+
+[data-ani="fade-down"].ani-running {
+    animation-name: ani-fade-down;
+}
+
+[data-ani="fade-left"].ani-running {
+    animation-name: ani-fade-left;
+}
+
+[data-ani="fade-right"].ani-running {
+    animation-name: ani-fade-right;
+}
+
+[data-ani="fade-up-sm"].ani-running {
+    animation-name: ani-fade-up-sm;
+}
+
+[data-ani="fade-up-lg"].ani-running {
+    animation-name: ani-fade-up-lg;
+}
+
+[data-ani="fade-down-sm"].ani-running {
+    animation-name: ani-fade-down-sm;
+}
+
+[data-ani="fade-down-lg"].ani-running {
+    animation-name: ani-fade-down-lg;
+}
+
+[data-ani="fade-left-sm"].ani-running {
+    animation-name: ani-fade-left-sm;
+}
+
+[data-ani="fade-right-sm"].ani-running {
+    animation-name: ani-fade-right-sm;
+}
+
+[data-ani="fade-up-left"].ani-running {
+    animation-name: ani-fade-up-left;
+}
+
+[data-ani="fade-up-right"].ani-running {
+    animation-name: ani-fade-up-right;
+}
+
+[data-ani="fade-down-left"].ani-running {
+    animation-name: ani-fade-down-left;
+}
+
+[data-ani="fade-down-right"].ani-running {
+    animation-name: ani-fade-down-right;
+}
+
+/* Keyframes */
+@keyframes ani-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ani-fade-up {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-down {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-left {
+    from {
+        opacity: 0;
+        transform: translate3d(40px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-right {
+    from {
+        opacity: 0;
+        transform: translate3d(-40px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-up-sm {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-up-lg {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-down-sm {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-down-lg {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-left-sm {
+    from {
+        opacity: 0;
+        transform: translate3d(20px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-right-sm {
+    from {
+        opacity: 0;
+        transform: translate3d(-20px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-up-left {
+    from {
+        opacity: 0;
+        transform: translate3d(40px, 40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-up-right {
+    from {
+        opacity: 0;
+        transform: translate3d(-40px, 40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-down-left {
+    from {
+        opacity: 0;
+        transform: translate3d(40px, -40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes ani-fade-down-right {
+    from {
+        opacity: 0;
+        transform: translate3d(-40px, -40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}

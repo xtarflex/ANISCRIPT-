@@ -1,0 +1,57 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Multi-stage Pro Glow -->
+    <filter id="pro_glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Unified swoosh gradient with premium depth -->
+    <linearGradient id="flux_grad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#38bdf8;stop-opacity:0.25" />
+      <stop offset="70%" style="stop-color:#38bdf8;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Syntax Bracket Gradient -->
+    <linearGradient id="bracket_grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Premium Slate 900 Canvas -->
+  <rect width="512" height="512" rx="140" fill="#0f172a" />
+  
+  <!-- Balanced Master Group -->
+  <g transform="translate(10, 0)" filter="url(#pro_glow)">
+    
+    <!-- Top ":: >" Component (Symmetrical Ribbon) -->
+    <g transform="translate(0, -20)">
+      <!-- Double Colon Dots -->
+      <circle cx="95" cy="155" r="18" fill="#38bdf8" opacity="0.4" />
+      <circle cx="95" cy="205" r="18" fill="#38bdf8" opacity="0.4" />
+      
+      <!-- Thick Dynamic Ribbon (Unified Path) -->
+      <path d="M125 170H230L220 125C220 118 228 114 234 118L314 163C320 167 320 173 314 177L234 222C228 226 220 222 220 215L230 190H125V170Z" fill="url(#flux_grad)" />
+    </g>
+    
+    <!-- Bottom ":: >" Component (Staggered Offset + Symmetrical Ribbon) -->
+    <g transform="translate(25, 20)">
+      <!-- Double Colon Dots -->
+      <circle cx="115" cy="305" r="18" fill="#38bdf8" opacity="0.4" />
+      <circle cx="115" cy="355" r="18" fill="#38bdf8" opacity="0.4" />
+      
+      <!-- Thick Dynamic Ribbon -->
+      <path d="M145 320H250L240 275C240 268 248 264 254 268L334 313C340 317 340 323 334 327L254 372C248 376 240 372 240 365L250 340H145V320Z" fill="url(#flux_grad)" />
+    </g>
+
+    <!-- Syntax Bracket (Centered Balance) -->
+    <path d="M405 85C440 85 462 105 462 150V362C462 407 440 427 405 427" stroke="url(#bracket_grad)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />
+  </g>
+
+  <!-- Technical Bezel Detail -->
+  <rect x="4" y="4" width="504" height="504" rx="136" stroke="#38bdf8" stroke-width="1.5" opacity="0.1" />
+</svg>

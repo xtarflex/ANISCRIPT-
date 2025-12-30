@@ -1,0 +1,14 @@
+/**
+ * AniScript Styles Module (Agent C)
+ * Main entry point for the animation library.
+ */
+
+/* Base Styles */
+@import "base/core.css";
+
+/* Animation Categories */
+@import "components/fades.css";
+@import "components/zooms.css";
+@import "components/slides.css";
+@import "components/bounces.css";
+@import "components/others.css";

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniScript Live Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --pane-bg: #1e293b;
+            --border-color: #334155;
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+            --header-height: 60px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            height: var(--header-height);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        select {
+            background: var(--pane-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .pane-header {
+            padding: 8px 16px;
+            background: rgba(30, 41, 59, 0.5);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        textarea {
+            flex: 1;
+            background: var(--pane-bg);
+            color: #e2e8f0;
+            border: none;
+            padding: 16px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            resize: none;
+            outline: none;
+            line-height: 1.5;
+        }
+
+        pre {
+            flex: 1;
+            background: #020617;
+            color: #94a3b8;
+            padding: 16px;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            overflow: auto;
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .preview {
+            flex: 1;
+            background: #f1f5f9;
+            color: #1e293b;
+            padding: 40px;
+            overflow: auto;
+            position: relative;
+        }
+
+        /* Preview specific styles for demo elements */
+        .preview h1 {
+            -webkit-text-fill-color: initial;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .preview p {
+            margin-bottom: 1rem;
+        }
+
+        .preview .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .preview button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* AniScript Core Classes (Injected via CSS file but defined here for playground isolation if needed) */
+        [data-ani].ani-paused {
+            opacity: 0;
+        }
+
+        /* Demo Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+    </style>
+    <style>
+        /* Import the actual library styles */
+        @import "../src/css/aniscript.css";
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AniScript Playground</h1>
+        <div class="controls">
+            <select id="exampleSelector">
+                <option value="">Load Example...</option>
+                <option value="fade">Simple Fade</option>
+                <option value="grid">Stagger Grid</option>
+                <option value="hero">Hero Section</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="pane">
+            <div class="pane-header">Input (AniScript)</div>
+            <textarea id="input" spellcheck="false">:: fade-up | @200ms :: {
+  <div class="card">
+    <h3>Welcome to AniScript</h3>
+    <p>Edit this code to see live changes.</p>
+  </div>
+}</textarea>
+        </div>
+
+        <div class="pane">
+            <div class="pane-header">Debug View (HTML)</div>
+            <pre id="output"></pre>
+        </div>
+
+        <div class="pane" style="border-right: none;">
+            <div class="pane-header">Live Preview</div>
+            <div class="preview" id="preview"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { compile } from '../src/compiler/index.js';
+        import { initAnimateOnView } from '../src/runtime/index.js';
+
+        const inputArea = document.getElementById('input');
+        const outputArea = document.getElementById('output');
+        const previewArea = document.getElementById('preview');
+        const exampleSelector = document.getElementById('exampleSelector');
+
+        const examples = {
+            fade: `:: fade-in | @500ms :: {\n  <div class="card">\n    <h3>Simple Fade</h3>\n    <p>This element fades in after 500ms.</p>\n  </div>\n}`,
+            grid: `[[ stagger: 150ms ]]\n  :: zoom-in-sm :: { <div class="card">Item 1</div> }\n  :: zoom-in-sm :: { <div class="card">Item 2</div> }\n  :: zoom-in-sm :: { <div class="card">Item 3</div> }\n  :: zoom-in-sm :: { <div class="card">Item 4</div> }\n  :: zoom-in-sm :: { <div class="card">Item 5</div> }\n  :: zoom-in-sm :: { <div class="card">Item 6</div> }\n[[/]]`,
+            hero: `:: fade-down | @100ms | dur:1s :: {\n  <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Experience Motion</h1>\n}\n:: fade-up | @600ms :: {\n  <p style="font-size: 1.2rem; color: #64748b; margin-bottom: 2rem;">A powerful animation DSL for modern web developers.</p>\n}\n:: zoom-in | @1.2s :: {\n  <button>Get Started Free</button>\n}`
+        };
+
+        function update() {
+            const source = inputArea.value;
+            try {
+                const html = compile(source);
+                outputArea.textContent = html;
+                previewArea.innerHTML = html;
+
+                // Re-initialize runtime animations
+                initAnimateOnView({ threshold: 0.01 });
+            } catch (err) {
+                outputArea.textContent = 'Error: ' + err.message;
+                outputArea.style.color = '#ef4444';
+            }
+        }
+
+        inputArea.addEventListener('input', update);
+
+        exampleSelector.addEventListener('change', (e) => {
+            const val = e.target.value;
+            if (val && examples[val]) {
+                inputArea.value = examples[val];
+                update();
+            }
+        });
+
+        // Initial run
+        update();
+    </script>
+</body>
+
+</html>
