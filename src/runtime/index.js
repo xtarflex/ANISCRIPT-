@@ -5,6 +5,9 @@
 
 import { createAniObserver } from './observer.js';
 
+// Global observer instance to prevent memory leaks and duplicate triggers
+let _observer = null;
+
 /**
  * Normalizes time strings to CSS time units (ms or s).
  * @param {string|number} time 
@@ -36,6 +39,11 @@ function parseToMs(timeStr) {
  * @param {Object} config - Configuration options for the observer.
  */
 export function initAnimateOnView(config = {}) {
+    // Disconnect existing observer to prevent memory leaks and duplicate triggers
+    if (_observer) {
+        _observer.disconnect();
+    }
+
     // 1. Scan for stagger containers
     const staggerContainers = document.querySelectorAll('[data-ani-stagger]');
     staggerContainers.forEach(container => {
@@ -62,7 +70,7 @@ export function initAnimateOnView(config = {}) {
 
     // 2. Scan for individual elements not in a stagger container
     const allAnimatedElements = document.querySelectorAll('[data-ani]');
-    const observer = createAniObserver(config);
+    _observer = createAniObserver(config);
 
     allAnimatedElements.forEach(el => {
         // If not already processed by stagger logic
@@ -76,7 +84,7 @@ export function initAnimateOnView(config = {}) {
             el.classList.add('ani-paused');
         }
 
-        observer.observe(el);
+        _observer.observe(el);
     });
 }
 
