@@ -6,6 +6,13 @@ AniScript is a high-performance animation library designed to bring life to stat
 
 ---
 
+## 📚 Documentation
+- [🚀 Getting Started](docs/GETTING_STARTED.md) - Set up AniScript in 5 minutes.
+- [📖 API Reference](docs/API_REFERENCE.md) - Complete list of 53 animations and parameters.
+- [🛠 Technical Spec](SPEC.md) - Deep dive for contributors.
+
+---
+
 ## ✨ Killer Feature: Markdown Supercharger
 AniScript allows you to wrap any content in sophisticated animations using a concise, readable syntax. Whether you're building a landing page, a blog, or a documentation site, AniScript adds a premium feel with almost zero overhead.
 
@@ -61,29 +68,20 @@ AniScript comes packed with 53 hardware-accelerated animations across 9 categori
 
 ## 📦 Installation & Usage
 
+For full instructions, check our [🚀 Getting Started](docs/GETTING_STARTED.md) guide.
+
 ### 1. Install
 ```bash
 npm install aniscript
 ```
 
-### 2. Import and Initialize
+### 2. Quick Setup
 ```javascript
 import { compile, init } from 'aniscript';
+import 'aniscript/dist/aniscript.css';
 
-// Compile DSL to HTML
-const html = compile(':: fade-up :: { Animated Text }');
-
-// Inject into DOM
-document.body.innerHTML = html;
-
-// Initialize Runtime (IntersectionObserver)
-init({ threshold: 0.1 });
-```
-
-### 3. Include CSS
-Ensure you include the AniScript CSS in your project:
-```html
-<link rel="stylesheet" href="node_modules/aniscript/dist/aniscript.css">
+document.body.innerHTML = compile(':: fade-up :: { Animated Text }');
+init();
 ```
 
 ---
