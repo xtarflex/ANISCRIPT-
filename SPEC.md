@@ -2,7 +2,7 @@
 
 ## 0. Assumptions & Constraints
 - **Default Duration**: `1000ms` (1s).
-- **Default Delay**: `500ms`.
+- **Default Delay**: `0ms`.
 - **Default Tag**: `div`.
 - **Default Easing**: `cubic-bezier(0.4, 0, 0.2, 1)` (ease-out).
 - **Stagger Base Delay**: `100ms`.
