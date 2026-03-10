@@ -22,3 +22,10 @@
 [data-ani].ani-running {
     pointer-events: auto;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    [data-ani] {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+    }
+}
