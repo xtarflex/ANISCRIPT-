@@ -18,6 +18,20 @@ export class Lexer {
         this.col = 1;
     }
 
+    save() {
+        return {
+            pos: this.pos,
+            line: this.line,
+            col: this.col
+        };
+    }
+
+    restore(state) {
+        this.pos = state.pos;
+        this.line = state.line;
+        this.col = state.col;
+    }
+
     nextToken() {
         if (this.pos >= this.input.length) {
             return { type: 'EOF', value: '', line: this.line, col: this.col };

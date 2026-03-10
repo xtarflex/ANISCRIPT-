@@ -4,16 +4,11 @@ export class Parser {
     constructor(input) {
         this.lexer = new Lexer(input);
         this.currentToken = null;
-        this.lookaheadBuffer = [];
     }
 
     peek() {
         if (!this.currentToken) {
-            if (this.lookaheadBuffer.length > 0) {
-                this.currentToken = this.lookaheadBuffer.shift();
-            } else {
-                this.currentToken = this.lexer.nextToken();
-            }
+            this.currentToken = this.lexer.nextToken();
         }
         return this.currentToken;
     }
@@ -79,10 +74,11 @@ export class Parser {
     isAnimationStart() {
         if (this.peek().type !== 'DOUBLE_COLON') return false;
 
-        const tokens = [];
+        // Save lexer state and current token
+        const lexerState = this.lexer.save();
+        const savedToken = this.currentToken;
 
-        // Collect tokens to look ahead
-        tokens.push(this.advance()); // Consume ::
+        this.advance(); // Consume ::
 
         let looksLikeAni = false;
         while (this.peek().type !== 'EOF') {
@@ -94,18 +90,15 @@ export class Parser {
                 break;
             }
             if (tok.type === 'TEXT' && /^\s+$/.test(tok.value)) {
-                tokens.push(this.advance());
+                this.advance();
                 continue;
             }
             break;
         }
 
-        // Put everything back into the lookahead buffer
-        if (this.currentToken) {
-            this.lookaheadBuffer = [this.currentToken, ...this.lookaheadBuffer];
-        }
-        this.lookaheadBuffer = [...tokens, ...this.lookaheadBuffer];
-        this.currentToken = null; // Forces next peek() to take from lookaheadBuffer
+        // Restore lexer state and current token
+        this.lexer.restore(lexerState);
+        this.currentToken = savedToken;
 
         return looksLikeAni;
     }
@@ -116,7 +109,7 @@ export class Parser {
 
         let aniName = null;
         let tag = 'div';
-        let delay = '500ms';
+        let delay = '0ms';
         let duration = '1s';
 
         // Parse params: skip whitespace manually or use a loop that ignores it

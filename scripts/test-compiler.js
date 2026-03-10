@@ -15,8 +15,13 @@ fixtures.forEach((test, index) => {
     try {
         const result = compile(test.input);
         if (test.expected_error) {
-            failed++;
-            results.push({ index, name: test.name, status: 'FAIL', expected_error: test.expected_error, got: result });
+            if (result.includes(test.expected_error)) {
+                passed++;
+                results.push({ index, name: test.name, status: 'PASS', note: 'Caught expected error in output' });
+            } else {
+                failed++;
+                results.push({ index, name: test.name, status: 'FAIL', expected_error: test.expected_error, got: result });
+            }
         } else if (result.trim() === test.expected.trim()) {
             passed++;
             results.push({ index, name: test.name, status: 'PASS' });

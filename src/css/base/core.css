@@ -5,7 +5,7 @@
 
 [data-ani] {
     --ani-duration: 1000ms;
-    --ani-delay: 500ms;
+    --ani-delay: 0ms;
     --ani-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
     animation-duration: var(--ani-duration);
