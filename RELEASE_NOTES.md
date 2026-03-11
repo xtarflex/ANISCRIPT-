@@ -1,3 +1,25 @@
+# 📝 RELEASE NOTES - AniScript v1.1.0
+
+## [v1.1.0] - 2026-03-10
+
+This release focuses on performance stability, accessibility, and professional developer tooling.
+
+### ✨ Highlights
+
+#### ♿ Accessibility First
+Added support for the `prefers-reduced-motion` media query. AniScript now automatically respects OS-level accessibility settings, ensuring a safe experience for users with motion sensitivity.
+
+#### ⚡ Performance & Stability
+- **Memory Leak Fix**: Resolved a critical issue where `IntersectionObserver` instances were accumulating on repeated script initializations.
+- **Improved UX**: The default animation delay has been changed from `500ms` to `0ms`, eliminating the perceived "blank flash" when elements enter the viewport.
+
+#### 🛠 Developer Experience
+- **Jest Integration**: Migrated to Jest for more robust automated testing and code coverage reporting.
+- **Strict Mode**: The compiler now supports a `{ strict: true }` option for better integration with build pipelines.
+- **Robust Parsing**: Refactored the internal lookahead heuristic to be much more stable and future-proof.
+
+---
+
 # 📝 RELEASE NOTES - AniScript v1.0.0
 
 We are proud to announce the first stable release of **AniScript**, the Markdown Supercharger!

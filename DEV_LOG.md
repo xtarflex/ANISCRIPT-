@@ -88,3 +88,17 @@
 - **Notes**:
     - The library is now ready for production-level core use. 
     - Future enhancements can now build upon this stable foundation.
+
+## [2026-03-10] v1.1.0: Accessibility & Performance Audit
+- **Status**: Completed.
+- **Progress**:
+    - Conducted a full audit based on expert code reviews.
+    - **Runtime**: Fixed a significant memory leak by implementing a module-scoped observer with proper cleanup (`disconnect()`).
+    - **Compiler**: Changed the default delay to `0ms` to improve perceived performance.
+    - **Accessibility**: Implemented `prefers-reduced-motion: reduce` fallback in `core.css`.
+    - **Testing**: Migrated to **Jest** and achieved 100% pass rate across the improved fixture suite.
+    - **Refinement**: Implemented a non-destructive state-based lookahead in the Parser, replacing the brittle buffer approach.
+    - **Documentation**: Created `GETTING_STARTED.md` and `API_REFERENCE.md`.
+- **Notes**:
+    - The library now feels significantly more responsive on initial load.
+    - Added a `strict` mode to the compiler to allow for cleaner automated test failures.

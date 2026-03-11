@@ -1,4 +1,4 @@
-# <img src="logo.svg" width="48" style="vertical-align: middle; margin-right: 10px;"> AniScript v1.0.0
+# <img src="logo.svg" width="48" style="vertical-align: middle; margin-right: 10px;"> AniScript v1.1.0
 
 ### The Markdown Supercharger
 
