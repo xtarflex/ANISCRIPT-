@@ -1,6 +1,6 @@
 {
     "name": "aniscript",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "A dual-module animation library with a DSL compiler and standard runtime.",
     "main": "src/index.js",
     "module": "src/index.js",

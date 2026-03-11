@@ -1,4 +1,4 @@
-# <img src="logo.svg" width="48" style="vertical-align: middle; margin-right: 10px;"> AniScript v1.1.0
+# <img src="logo.svg" width="48" style="vertical-align: middle; margin-right: 10px;"> AniScript v1.1.1
 
 ### The Markdown Supercharger
 
@@ -7,9 +7,9 @@ AniScript is a high-performance animation library designed to bring life to stat
 ---
 
 ## 📚 Documentation
-- [🚀 Getting Started](docs/GETTING_STARTED.md) - Set up AniScript in 5 minutes.
-- [📖 API Reference](docs/API_REFERENCE.md) - Complete list of 53 animations and parameters.
-- [🛠 Technical Spec](SPEC.md) - Deep dive for contributors.
+- [🚀 Getting Started](https://github.com/xtarflex/ANISCRIPT-/blob/master/docs/GETTING_STARTED.md) - Set up AniScript in 5 minutes.
+- [📖 API Reference](https://github.com/xtarflex/ANISCRIPT-/blob/master/docs/API_REFERENCE.md) - Complete list of 53 animations and parameters.
+- [🛠 Technical Spec](https://github.com/xtarflex/ANISCRIPT-/blob/master/SPEC.md) - Deep dive for contributors.
 
 ---
 

@@ -1,4 +1,4 @@
-# 📖 AniScript API Reference (v1.0.0)
+# 📖 AniScript API Reference (v1.1.0)
 
 This reference lists all 53 built-in animations, how to use staggered groups, and the supported parameters.
 

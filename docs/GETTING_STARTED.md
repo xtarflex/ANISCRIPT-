@@ -1,4 +1,4 @@
-# 🚀 Getting Started with AniScript
+# 🚀 Getting Started with AniScript (v1.1.0)
 
 Welcome to **AniScript**, the lightweight animation DSL designed to make your web content dynamic with minimal code. This guide will help you set up and use AniScript in your project, whether you're using a modern build pipeline or a simple static website.
 
@@ -91,4 +91,4 @@ If you don't want to use the compiler, you can write the HTML manually!
 ---
 
 ### Need More?
-Check the [API Reference](API_REFERENCE.md) for a list of all 53 animations, or see the [Architecture Spec](../SPEC.md) for technical details.
+Check the [API Reference](https://github.com/xtarflex/ANISCRIPT-/blob/master/docs/API_REFERENCE.md) for a list of all 53 animations, or see the [Architecture Spec](https://github.com/xtarflex/ANISCRIPT-/blob/master/SPEC.md) for technical details.
