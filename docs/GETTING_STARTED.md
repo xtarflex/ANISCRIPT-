@@ -1,4 +1,4 @@
-# 🚀 Getting Started with AniScript (v1.1.0)
+# 🚀 Getting Started with AniScript (v1.1.1)
 
 Welcome to **AniScript**, the lightweight animation DSL designed to make your web content dynamic with minimal code. This guide will help you set up and use AniScript in your project, whether you're using a modern build pipeline or a simple static website.
 
@@ -79,7 +79,7 @@ If you don't want to use the compiler, you can write the HTML manually!
 ## 💡 Pro Tips
 
 *   **Initial State**: The runtime handles adding `ani-paused` classes, but for complex layouts, it's best to ensure your elements are hidden initially (`opacity: 0`) if they aren't using the DSL.
-*   **Initialization**: Only call `init()` **once** per page load. If you add elements dynamically, you might need a re-scan (coming in v1.1!).
+*   **Initialization**: Only call `init()` **once** per page load. If you add elements dynamically, you might need a re-scan (coming in v1.2!).
 *   **Customization**: You can customize the `IntersectionObserver` via the `init()` options:
     ```javascript
     init({

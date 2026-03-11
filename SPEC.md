@@ -1,4 +1,4 @@
-# AniScript Technical Specification (v1.1.0)
+# AniScript Technical Specification (v1.1.1)
 
 ## 0. Assumptions & Constraints
 - **Default Duration**: `1000ms` (1s).

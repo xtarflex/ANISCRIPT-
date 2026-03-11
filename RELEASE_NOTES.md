@@ -6,9 +6,9 @@
 
 ---
 
-# 📝 RELEASE NOTES - AniScript v1.1.0
+# 📝 RELEASE NOTES - AniScript v1.1.1
 
-## [v1.1.0] - 2026-03-10
+## [v1.1.1] - 2026-03-10
 
 This release focuses on performance stability, accessibility, and professional developer tooling.
 

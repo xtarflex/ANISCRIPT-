@@ -1,5 +1,5 @@
 /**
- * AniScript v1.1.0
+ * AniScript v1.1.1
  * Main Entry Point
  */
 
