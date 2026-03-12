@@ -1,0 +1,22 @@
+# Testing and Coverage
+coverage/
+tests/
+test_results.json
+
+# Development Scripts and Playgrounds
+scripts/
+playground/
+
+# Documentation / Internal Notes
+DEV_LOG.md
+SPEC.md
+RESEARCH.md
+agent.md
+.agent/
+
+# Artifacts & Reviews
+*.docx
+*.pdf
+
+# Ignore Github workflows and project configs
+.github/
