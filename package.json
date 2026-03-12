@@ -1,6 +1,6 @@
 {
     "name": "aniscript",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "description": "A dual-module animation library with a DSL compiler and standard runtime.",
     "main": "src/index.js",
     "module": "src/index.js",
@@ -9,6 +9,10 @@
         "./compiler": "./src/compiler/index.js",
         "./runtime": "./src/runtime/index.js"
     },
+    "files": [
+        "dist",
+        "src"
+    ],
     "scripts": {
         "test": "node scripts/test-compiler.js",
         "test:compiler": "node scripts/test-compiler.js",
