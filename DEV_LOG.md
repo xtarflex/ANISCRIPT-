@@ -102,3 +102,12 @@
 - **Notes**:
     - The library now feels significantly more responsive on initial load.
     - Added a `strict` mode to the compiler to allow for cleaner automated test failures.
+
+## [2026-03-13] v1.1.2 - v1.1.4: Deployment & Stabilization
+- **Status**: Completed.
+- **Progress**:
+    - **v1.1.2**: Created .npmignore and files array in package.json to publish an ultra-lean 9kB package, excluding test artifacts and dev docs.
+    - **v1.1.3**: Ensured only src and dist are shipped.
+    - **v1.1.4**: Fixed animation-fill-mode in core.css from forwards to both. This critical fix resolves a stagger delay flicker, where elements would appear fully visible for a fraction of a second before the staggered animation commenced.
+- **Notes**:
+    - The AniScript Landing Page (Vite) now natively relies on the 1.1.4 npm package with FOUC prevention logic successfully preserving visual integrity.
