@@ -1,4 +1,5 @@
 import { Lexer } from './lexer.js';
+import { escapeHTML } from './utils.js';
 
 export class Parser {
     constructor(input) {
@@ -60,14 +61,14 @@ export class Parser {
             if (this.isAnimationStart()) {
                 return this.parseAnimation();
             } else {
-                return this.advance().value; // Treat as literal ::
+                return escapeHTML(this.advance().value); // Treat as literal ::
             }
         } else if (token.type === 'STAGGER_OPEN') {
             return this.parseStagger();
         } else if (token.type === 'EOF') {
             return '';
         } else {
-            return this.advance().value;
+            return escapeHTML(this.advance().value);
         }
     }
 
@@ -143,18 +144,18 @@ export class Parser {
             const next = this.peek();
             if (next.type === 'BRACE_OPEN') {
                 braceDepth++;
-                content += this.advance().value;
+                content += escapeHTML(this.advance().value);
             } else if (next.type === 'BRACE_CLOSE') {
                 braceDepth--;
                 if (braceDepth > 0) {
-                    content += this.advance().value;
+                    content += escapeHTML(this.advance().value);
                 }
             } else if (next.type === 'DOUBLE_COLON' && this.isAnimationStart()) {
                 content += this.parseAnimation();
             } else if (next.type === 'STAGGER_OPEN') {
                 content += this.parseStagger();
             } else {
-                content += this.advance().value;
+                content += escapeHTML(this.advance().value);
             }
         }
 
@@ -164,7 +165,7 @@ export class Parser {
 
         this.expect('BRACE_CLOSE', null, false); // No skipWS before closing brace of content
 
-        return `<${tag} data-ani="${aniName}" data-ani-delay="${delay}" data-ani-duration="${duration}">${content.trim()}</${tag}>`;
+        return `<${tag} data-ani="${escapeHTML(aniName)}" data-ani-delay="${escapeHTML(delay)}" data-ani-duration="${escapeHTML(duration)}">${content.trim()}</${tag}>`;
     }
 
     parseStagger() {
@@ -184,7 +185,7 @@ export class Parser {
 
         this.expect('STAGGER_CLOSE', null, true);
 
-        return `<div data-ani-stagger="${staggerTime}">${content}</div>`;
+        return `<div data-ani-stagger="${escapeHTML(staggerTime)}">${content}</div>`;
     }
 
     formatTime(value) {

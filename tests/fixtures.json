@@ -95,9 +95,9 @@
     "expected": "<div data-ani-stagger=\"100ms\"><div data-ani=\"fade-up\" data-ani-delay=\"0ms\" data-ani-duration=\"1s\">1</div></div>"
   },
   {
-    "name": "Complex text in content",
+    "name": "Complex text in content (Escaped)",
     "input": ":: fade-up :: { <span>Nested HTML</span> }",
-    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"0ms\" data-ani-duration=\"1s\"><span>Nested HTML</span></div>"
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"0ms\" data-ani-duration=\"1s\">&lt;span&gt;Nested HTML&lt;/span&gt;</div>"
   },
   {
     "name": "Nested Animation",
@@ -128,5 +128,15 @@
     "name": "Negative: Missing Animation Name",
     "input": ":: | @100ms :: { Content }",
     "expected_error": "Syntax Error: Missing animation name"
+  },
+  {
+    "name": "HTML Injection in Content",
+    "input": ":: fade-up :: { <img src=x onerror=alert(1)> }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"0ms\" data-ani-duration=\"1s\">&lt;img src=x onerror=alert(1)&gt;</div>"
+  },
+  {
+    "name": "HTML Injection in Content (Recursive)",
+    "input": ":: fade-up :: { :: fade-down :: { <img src=x onerror=alert(1)> } }",
+    "expected": "<div data-ani=\"fade-up\" data-ani-delay=\"0ms\" data-ani-duration=\"1s\"><div data-ani=\"fade-down\" data-ani-delay=\"0ms\" data-ani-duration=\"1s\">&lt;img src=x onerror=alert(1)&gt;</div></div>"
   }
 ]
