@@ -1,3 +1,12 @@
+# 📝 RELEASE NOTES - AniScript v1.1.5
+
+## [v1.1.5] - 2026-03-17
+
+- **Security Fix**: Patched a Cross-Site Scripting (XSS) vulnerability in the AniScript compiler error messages.
+- **Testing**: Added comprehensive unit tests for XSS payloads and restructured the testing directory to support integration tests.
+
+---
+
 # 📝 RELEASE NOTES - AniScript v1.1.1
 
 ## [v1.1.1] - 2026-03-11

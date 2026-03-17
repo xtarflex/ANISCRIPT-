@@ -1,5 +1,15 @@
 # AniScript Developer Log
 
+## [2026-03-17] v1.1.5: Security Patch & Testing
+- **Status**: Completed.
+- **Progress**:
+    - **Compiler Security**: Merged a PR addressing an XSS vulnerability in `src/compiler/index.js` by escaping HTML entities.
+    - **Testing Architecture**: Restructured the testing directory into `tests/unit` and `tests/integration`.
+    - Added comprehensive unit tests for `escapeHtml()` covering edge cases and XSS payloads.
+    - Updated Jest configuration to use `--experimental-vm-modules` for native ESM compatibility.
+- **Notes**:
+    - All 17 unit tests and 29 integration tests are passing perfectly under the new Jest configuration.
+
 ## [2025-12-23] Phase 1 & 2 Completed
 - **Status**: SPEC approved, Fixtures created.
 - **Notes**: Added rich animations and negative test paths to the source of truth. Recursive parsing will be required for nested animations.
