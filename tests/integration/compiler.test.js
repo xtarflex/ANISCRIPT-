@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import { compile } from '../src/compiler/index.js';
-import { Parser } from '../src/compiler/parser.js';
+import { compile } from '../../src/compiler/index.js';
+import { Parser } from '../../src/compiler/parser.js';
 
-const fixturesPath = path.resolve('tests/fixtures.json');
+const fixturesPath = path.resolve('tests/integration/fixtures.json');
 const fixtures = JSON.parse(fs.readFileSync(fixturesPath, 'utf8'));
 
 describe('AniScript Compiler', () => {
@@ -22,7 +22,7 @@ describe('AniScript Compiler Error Handling', () => {
         // Since standard parser errors might not reflect the full payload verbatim,
         // we can force an error inside the parser to test the catch block's escaping.
         const originalParse = Parser.prototype.parse;
-        Parser.prototype.parse = function() {
+        Parser.prototype.parse = function () {
             throw new Error("<script>alert('xss')</script>");
         };
 
