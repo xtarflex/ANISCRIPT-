@@ -7,6 +7,17 @@ import { Parser } from './parser.js';
  * @param {boolean} options.strict - If true, throws errors instead of returning error HTML.
  * @returns {string}
  */
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 export function compile(input, { strict = false } = {}) {
     if (!input) return '';
     try {
@@ -16,7 +27,7 @@ export function compile(input, { strict = false } = {}) {
         if (strict) throw error;
         console.error('AniScript Compilation Error:', error);
         return `<div class="ani-error" style="color: red; border: 1px solid red; padding: 10px; margin: 10px 0;">
-            <strong>AniScript Error:</strong> ${error.message}
+            <strong>AniScript Error:</strong> ${escapeHtml(error.message)}
         </div>`;
     }
 }

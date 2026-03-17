@@ -128,5 +128,10 @@
     "name": "Negative: Missing Animation Name",
     "input": ":: | @100ms :: { Content }",
     "expected_error": "Syntax Error: Missing animation name"
+  },
+  {
+    "name": "Error handling XSS payload in error message",
+    "input": ":: fade-up :: { <script>alert('xss')</script>",
+    "expected_error": "Syntax Error: Unclosed content block"
   }
 ]
