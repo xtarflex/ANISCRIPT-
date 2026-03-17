@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { compile } from '../src/compiler/index.js';
 
-const fixturesPath = path.resolve('tests/fixtures.json');
+const fixturesPath = path.resolve('tests/integration/fixtures.json');
 const fixtures = JSON.parse(fs.readFileSync(fixturesPath, 'utf8'));
 
 let passed = 0;
