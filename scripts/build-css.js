@@ -25,7 +25,13 @@ const componentFiles = fs.readdirSync(componentsDir)
 
 const allFiles = [...cssFiles, ...componentFiles];
 
-let combinedCss = '/* AniScript V1.0.0 - Combined Styles */\n';
+
+const packageJsonPath = path.join(rootDir, 'package.json');
+const pkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+const version = pkg.version;
+
+let combinedCss = `/* AniScript v${version} - Combined Styles */\n`;
+
 
 for (const file of allFiles) {
     if (fs.existsSync(file)) {
