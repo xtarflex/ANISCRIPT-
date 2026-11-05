@@ -8,6 +8,11 @@ import { createAniObserver } from './observer.js';
 // Global observer instance to prevent memory leaks and duplicate triggers
 let _observer = null;
 
+const ATTENTION_SEEKERS = [
+    'shake-h', 'shake-v', 'pulse', 'swing', 'jello', 'wobble', 'rubber-band'
+];
+
+
 /**
  * Normalizes time strings to CSS time units (ms or s).
  * @param {string|number} time 
@@ -63,8 +68,11 @@ export function initAnimateOnView(config = {}) {
                 child.style.animationDuration = normalizeTime(duration);
             }
 
-            // Mark as paused initially
-            child.classList.add('ani-paused');
+            // Mark as paused initially, unless it's an attention seeker
+            const aniName = child.getAttribute('data-ani');
+            if (!ATTENTION_SEEKERS.includes(aniName)) {
+                child.classList.add('ani-paused');
+            }
         });
     });
 
@@ -81,7 +89,10 @@ export function initAnimateOnView(config = {}) {
             if (delay) el.style.animationDelay = normalizeTime(delay);
             if (duration) el.style.animationDuration = normalizeTime(duration);
 
-            el.classList.add('ani-paused');
+            const aniName = el.getAttribute('data-ani');
+            if (!ATTENTION_SEEKERS.includes(aniName)) {
+                el.classList.add('ani-paused');
+            }
         }
 
         _observer.observe(el);

@@ -1,6 +1,6 @@
 {
     "name": "aniscript",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "A dual-module animation library with a DSL compiler and standard runtime.",
     "main": "src/index.js",
     "module": "src/index.js",
@@ -32,7 +32,8 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "jest": "^29.7.0"
+        "jest": "^29.7.0",
+        "jest-environment-jsdom": "^30.3.0"
     },
     "type": "module"
 }

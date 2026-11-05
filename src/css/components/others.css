@@ -41,9 +41,11 @@
     animation-name: ani-blur-in-lg;
 }
 
+/* Temporarily removed until exit animation support ships in v1.2
 [data-ani="blur-out"].ani-running {
     animation-name: ani-blur-out;
 }
+*/
 
 /* Selectors - Attention Seekers */
 [data-ani="shake-h"].ani-running {
@@ -159,7 +161,6 @@
     }
 
     to {
-        transform-origin: center bottom;
         transform: translate3d(0, 0, 0);
         opacity: 1;
     }
@@ -173,7 +174,6 @@
     }
 
     to {
-        transform-origin: center bottom;
         transform: translate3d(0, 0, 0);
         opacity: 1;
     }
@@ -216,6 +216,7 @@
     }
 }
 
+/*
 @keyframes ani-blur-out {
     from {
         filter: blur(0);
@@ -227,6 +228,7 @@
         opacity: 0;
     }
 }
+*/
 
 /* Keyframes - Attention Seekers */
 @keyframes ani-shake-h {

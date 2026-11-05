@@ -1,4 +1,15 @@
-# 📝 RELEASE NOTES - AniScript v1.1.5
+# 📝 RELEASE NOTES - AniScript v1.1.6
+
+## [v1.1.6] - 2026-04-11
+
+### Bug Fixes & Improvements
+- Disabled `blur-out` temporarily until exit animation support ships in v1.2.
+- Prevented `.ani-paused` class from applying to attention seeker animations (`shake-h`, `shake-v`, `pulse`, `swing`, `jello`, `wobble`, `rubber-band`) so they no longer start invisible.
+- Added `will-change: transform, opacity` to `.ani-paused` rules for better performance on mobile. For `blur-` animations, `filter` is included in `will-change`.
+- Removed redundant `transform-origin` property from `rotate-up` and `rotate-down` animations.
+- Updated Bounce animations translate distances from hardcoded `3000px` to `100vh` and `100vw` for better scaling on different screen sizes.
+- Automated version header injection in the combined CSS file during build to accurately reflect the correct version.
+- Updated the package version to `v1.1.6` across the codebase.
 
 ## [v1.1.5] - 2026-03-17
 
